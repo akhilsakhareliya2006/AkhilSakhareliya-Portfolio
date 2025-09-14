@@ -10,9 +10,11 @@ export default function Home() {
 
   const handleDownloadResume = () => {
     const link = document.createElement("a");
-    link.href = "/resume.pdf";
-    link.download = "Akhil_Sakhareliya_Resume.pdf";
+    link.href = "/certificates/Akhil_Resume.pdf";
+    link.download = "Akhil_Resume.pdf";
+    document.body.appendChild(link);
     link.click();
+    document.body.removeChild(link);
   };
 
   const scrollToProjects = () => {
@@ -128,4 +130,4 @@ export default function Home() {
       </button>
     </section>
   );
-} 
+}
