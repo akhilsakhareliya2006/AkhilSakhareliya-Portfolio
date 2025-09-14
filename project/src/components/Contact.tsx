@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Mail, Phone, MapPin, Send, Github, Linkedin, Twitter } from 'lucide-react';
-import emailjs from '@emailjs/browser';
+import emailjs from 'emailjs-com';
 
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -25,20 +25,17 @@ const Contact: React.FC = () => {
     setSubmitStatus('idle');
 
     try {
-      // Initialize EmailJS with your public key
-      emailjs.init("YOUR_PUBLIC_KEY");
-      
-      // Send email using EmailJS
-      await emailjs.send(
-        "YOUR_SERVICE_ID",
-        "YOUR_TEMPLATE_ID",
-        {
-          from_name: formData.name,
-          from_email: formData.email,
-          message: formData.message,
-          to_name: "Akhil Sakhareliya"
-        }
-      );
+      // Replace these with your actual EmailJS credentials
+      const serviceID = 'service_ag9u7lq';
+      const templateID = 'template_zcu6xjr';
+      const userID = 'bAp_Yc77yJCoQqeCp';
+
+      await emailjs.send(serviceID, templateID, {
+        from_name: formData.name,
+        from_email: formData.email,
+        message: formData.message,
+        to_email: 'akhilsakhareliya@gmail.com'
+      }, userID);
 
       setSubmitStatus('success');
       setFormData({ name: '', email: '', message: '' });
@@ -50,127 +47,102 @@ const Contact: React.FC = () => {
     }
   };
 
-  const contactInfo = [
-    {
-      icon: <Mail size={20} />,
-      label: 'Email',
-      value: 'akhilsakhareliya@gmail.com',
-      href: 'mailto:akhilsakhareliya@gmail.com'
-    },
-    {
-      icon: <Phone size={20} />,
-      label: 'Phone',
-      value: '+91 8141688250',
-      href: 'tel:+918141688250'
-    },
-    {
-      icon: <MapPin size={20} />,
-      label: 'Location',
-      value: 'Surat,Gujarat, India',
-      href: null
-    }
-  ];
-
-  const socialLinks = [
-    {
-      icon: <Github size={24} />,
-      label: 'GitHub',
-      href: 'https://github.com/akhilsakhareliya',
-      color: 'hover:bg-gray-800 hover:text-white'
-    },
-    {
-      icon: <Linkedin size={24} />,
-      label: 'LinkedIn',
-      href: 'https://linkedin.com/in/akhilsakhareliya',
-      color: 'hover:bg-blue-600 hover:text-white'
-    },
-    {
-      icon: <Twitter size={24} />,
-      label: 'Twitter',
-      href: 'https://twitter.com/akhilsakhareliya',
-      color: 'hover:bg-blue-400 hover:text-white'
-    }
-  ];
-
   return (
     <section id="contact" className="py-20 bg-gray-50 dark:bg-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-         <h2 className="text-4xl md:text-5xl font-bold mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4">
             <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800 dark:from-blue-400 dark:via-purple-400 dark:to-blue-600 bg-clip-text text-transparent">
-              Get In Touch
+              Let's Connect
             </span>
           </h2>
           <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            I'm always open to discussing new opportunities, interesting projects, or just having a chat about technology.
+            I'm currently available for full-time opportunities, freelance projects, or collaborative ventures. 
+            Feel free to reach out if you'd like to work together!
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Contact Information */}
-          <div className="space-y-8">
-            <div>
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
-                Let's Connect
-              </h3>
-              <p className="text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
-                I'm currently available for full-time opportunities, freelance projects, 
-                or collaborative ventures. Feel free to reach out if you'd like to work together!
-              </p>
-              
-              <div className="space-y-4">
-                {contactInfo.map((info, index) => (
-                  <div key={index} className="flex items-center gap-4">
-                    <div className="p-3 bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-400 rounded-lg">
-                      {info.icon}
-                    </div>
-                    <div>
-                      <p className="text-sm text-gray-500 dark:text-gray-400 font-medium">
-                        {info.label}
-                      </p>
-                      {info.href ? (
-                        <a
-                          href={info.href}
-                          className="text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200"
-                        >
-                          {info.value}
-                        </a>
-                      ) : (
-                        <p className="text-gray-900 dark:text-white">{info.value}</p>
-                      )}
-                    </div>
-                  </div>
-                ))}
+          <div>
+            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Get in Touch</h3>
+            
+            <div className="space-y-6">
+              <div className="flex items-start gap-4">
+                <div className="p-3 bg-blue-100 dark:bg-blue-900 rounded-lg text-blue-600 dark:text-blue-400">
+                  <Mail size={24} />
+                </div>
+                <div>
+                  <h4 className="font-semibold text-gray-900 dark:text-white">Email</h4>
+                  <a 
+                    href="mailto:akhilsakhareliya@gmail.com" 
+                    className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                  >
+                    akhilsakhareliya@gmail.com
+                  </a>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4">
+                <div className="p-3 bg-green-100 dark:bg-green-900 rounded-lg text-green-600 dark:text-green-400">
+                  <Phone size={24} />
+                </div>
+                <div>
+                  <h4 className="font-semibold text-gray-900 dark:text-white">Phone</h4>
+                  <a 
+                    href="tel:+918141688250" 
+                    className="text-gray-600 dark:text-gray-300 hover:text-green-600 dark:hover:text-green-400 transition-colors"
+                  >
+                    +91 8141688250
+                  </a>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4">
+                <div className="p-3 bg-purple-100 dark:bg-purple-900 rounded-lg text-purple-600 dark:text-purple-400">
+                  <MapPin size={24} />
+                </div>
+                <div>
+                  <h4 className="font-semibold text-gray-900 dark:text-white">Location</h4>
+                  <p className="text-gray-600 dark:text-gray-300">Surat, Gujarat, India</p>
+                </div>
               </div>
             </div>
 
-            {/* Social Links */}
-            <div>
-              <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
-                Follow Me
-              </h4>
+            <div className="mt-8">
+              <h4 className="font-semibold text-gray-900 dark:text-white mb-4">Follow Me</h4>
               <div className="flex gap-4">
-                {socialLinks.map((social, index) => (
-                  <a
-                    key={index}
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`p-3 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg transition-all duration-300 transform hover:scale-110 ${social.color}`}
-                    title={social.label}
-                  >
-                    {social.icon}
-                  </a>
-                ))}
+                <a
+                  href="https://github.com/akhilsakhareliya"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-3 bg-gray-800 text-white rounded-lg hover:bg-gray-700 transition-colors"
+                >
+                  <Github size={20} />
+                </a>
+                <a
+                  href="https://linkedin.com/in/akhilsakhareliya"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                >
+                  <Linkedin size={20} />
+                </a>
+                <a
+                  href="https://twitter.com/akhilsakhareliya"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-3 bg-blue-400 text-white rounded-lg hover:bg-blue-500 transition-colors"
+                >
+                  <Twitter size={20} />
+                </a>
               </div>
             </div>
           </div>
 
           {/* Contact Form */}
-          <div className="bg-white dark:bg-gray-900 rounded-xl shadow-lg p-8">
-            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
-              Send Message
-            </h3>
+          <div>
+            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Send Message</h3>
             
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
@@ -184,7 +156,7 @@ const Contact: React.FC = () => {
                   value={formData.name}
                   onChange={handleInputChange}
                   required
-                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-800 dark:text-white transition-all duration-200"
+                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:text-white transition-all"
                   placeholder="Enter your full name"
                 />
               </div>
@@ -200,7 +172,7 @@ const Contact: React.FC = () => {
                   value={formData.email}
                   onChange={handleInputChange}
                   required
-                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-800 dark:text-white transition-all duration-200"
+                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:text-white transition-all"
                   placeholder="Enter your email address"
                 />
               </div>
@@ -216,58 +188,48 @@ const Contact: React.FC = () => {
                   onChange={handleInputChange}
                   required
                   rows={5}
-                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-800 dark:text-white transition-all duration-200 resize-vertical"
+                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:text-white transition-all"
                   placeholder="Tell me about your project or just say hello!"
-                ></textarea>
+                />
               </div>
-
-              {/* Status Messages */}
-              {submitStatus === 'success' && (
-                <div className="p-4 bg-green-100 dark:bg-green-900 border border-green-200 dark:border-green-800 rounded-lg">
-                  <p className="text-green-800 dark:text-green-200 text-sm">
-                    Thank you for your message! I'll get back to you soon.
-                  </p>
-                </div>
-              )}
-
-              {submitStatus === 'error' && (
-                <div className="p-4 bg-red-100 dark:bg-red-900 border border-red-200 dark:border-red-800 rounded-lg">
-                  <p className="text-red-800 dark:text-red-200 text-sm">
-                    Sorry, there was an error sending your message. Please try again or contact me directly.
-                  </p>
-                </div>
-              )}
 
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 disabled:transform-none disabled:cursor-not-allowed"
+                className="w-full bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
               >
                 {isSubmitting ? (
                   <>
-                    <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                    <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
                     Sending...
                   </>
                 ) : (
                   <>
-                    <Send size={18} />
+                    <Send size={20} />
                     Send Message
                   </>
                 )}
               </button>
+
+              {submitStatus === 'success' && (
+                <div className="p-4 bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-300 rounded-lg">
+                  Message sent successfully! I'll get back to you soon.
+                </div>
+              )}
+
+              {submitStatus === 'error' && (
+                <div className="p-4 bg-red-100 dark:bg-red-900 text-red-700 dark:text-red-300 rounded-lg">
+                  Failed to send message. Please try again or email me directly at akhilsakhareliya@gmail.com
+                </div>
+              )}
             </form>
 
-            <div className="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700">
-              <p className="text-sm text-gray-500 dark:text-gray-400 text-center">
-                You can also reach me directly at{' '}
-                <a
-                  href="mailto:akhilsakhareliya@gmail.com"
-                  className="text-blue-600 dark:text-blue-400 hover:underline"
-                >
-                  akhilsakhareliya@gmail.com
-                </a>
-              </p>
-            </div>
+            <p className="mt-6 text-sm text-gray-600 dark:text-gray-400">
+              You can also reach me directly at{' '}
+              <a href="mailto:akhilsakhareliya@gmail.com" className="text-blue-600 dark:text-blue-400 hover:underline">
+                akhilsakhareliya@gmail.com
+              </a>
+            </p>
           </div>
         </div>
       </div>

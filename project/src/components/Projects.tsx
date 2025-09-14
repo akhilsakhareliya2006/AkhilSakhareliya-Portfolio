@@ -15,30 +15,30 @@ const Projects: React.FC = () => {
   const projects: Project[] = [
     {
       id: 1,
-      title: "E-Commerce Platform",
-      description: "Full-stack e-commerce application with user authentication, payment integration, and admin dashboard. Features include cart management, order tracking, and inventory control.",
-      techStack: ["React", "Node.js", "MongoDB", "Express", "Stripe", "JWT"],
-      githubUrl: "https://github.com/akhilsakhareliya/ecommerce-app",
-      demoUrl: "https://ecommerce-demo.com",
-      image: "https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg?auto=compress&cs=tinysrgb&w=800"
+      title: "TIC-TAC-TOE",
+      description: "A Tic-Tac-Toe game using HTML, CSS, and JavaScript is a classic browser-based project where two players take turns marking X and O on a 3×3 grid, with real-time win detection, responsive design, and interactive UI—all built using simple DOM manipulation and styling.",
+      techStack: ["HTML", "CSS", "JAVASCRIPT"],
+      githubUrl: "https://github.com/akhilsakhareliya2006/Tic-Tac-Toe.git",
+      demoUrl: "https://akhilsakhareliya2006.github.io/Tic-Tac-Toe/",
+      image: "public/projects_p/TIC1.avif"
     },
     {
       id: 2,
-      title: "Task Management System",
-      description: "Collaborative task management application with real-time updates, team collaboration features, and progress tracking. Includes Kanban board and calendar views.",
-      techStack: ["React", "Socket.io", "Node.js", "MongoDB", "Tailwind CSS"],
-      githubUrl: "https://github.com/akhilsakhareliya/task-manager",
-      demoUrl: "https://task-manager-demo.com",
-      image: "https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=800"
+      title: "Rock-Paper-Scissors",
+      description: "A Rock-Paper-Scissors game using HTML, CSS, and JavaScript is a fun, interactive browser project where players choose between rock, paper, or scissors, and the app uses JavaScript to randomly generate the computer's move, compare choices, and display the result with dynamic UI and score tracking.",
+      techStack: ["HTML", "CSS", "JAVASCRIPT"],
+      githubUrl: "https://github.com/akhilsakhareliya2006/Rock-Paper-Scissors.git",
+      demoUrl: "https://akhilsakhareliya2006.github.io/Rock-Paper-Scissors/",
+      image: "/public/projects_p/rock.jpg"
     },
     {
       id: 3,
-      title: "Social Media Dashboard",
-      description: "Analytics dashboard for social media management with data visualization, post scheduling, and engagement tracking across multiple platforms.",
-      techStack: ["React", "Chart.js", "Node.js", "Express", "PostgreSQL"],
-      githubUrl: "https://github.com/akhilsakhareliya/social-dashboard",
-      demoUrl: "https://social-dashboard-demo.com",
-      image: "https://images.pexels.com/photos/265087/pexels-photo-265087.jpeg?auto=compress&cs=tinysrgb&w=800"
+      title: "Portfolio",
+      description: "A personal portfolio website is a digital showcase of your skills, projects, and professional identity—designed to highlight your work, tell your story, and attract opportunities through clean visuals, intuitive layout, and compelling content.",
+      techStack: ["TypeScript", "CSS", "JavaScript", "HTML"],
+      githubUrl: "https://github.com/akhilsakhareliya2006/AkhilSakhareliya-Portfolio.git",
+      demoUrl: "https://akhilsakhareliya.tech/",
+      image: "/public/projects_p/portfolio.jpg"
     },
     {
       id: 4,
