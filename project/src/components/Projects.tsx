@@ -20,7 +20,7 @@ const Projects: React.FC = () => {
       techStack: ["HTML", "CSS", "JAVASCRIPT"],
       githubUrl: "https://github.com/akhilsakhareliya2006/Tic-Tac-Toe.git",
       demoUrl: "https://akhilsakhareliya2006.github.io/Tic-Tac-Toe/",
-      image: "public/projects_p/TIC1.avif"
+      image: "/projects_p/TIC1.avif" // Fixed path
     },
     {
       id: 2,
@@ -29,7 +29,7 @@ const Projects: React.FC = () => {
       techStack: ["HTML", "CSS", "JAVASCRIPT"],
       githubUrl: "https://github.com/akhilsakhareliya2006/Rock-Paper-Scissors.git",
       demoUrl: "https://akhilsakhareliya2006.github.io/Rock-Paper-Scissors/",
-      image: "/public/projects_p/rock.jpg"
+      image: "/projects_p/rock.jpg" // Fixed path
     },
     {
       id: 3,
@@ -38,7 +38,7 @@ const Projects: React.FC = () => {
       techStack: ["TypeScript", "CSS", "JavaScript", "HTML"],
       githubUrl: "https://github.com/akhilsakhareliya2006/AkhilSakhareliya-Portfolio.git",
       demoUrl: "https://akhilsakhareliya.tech/",
-      image: "/public/projects_p/portfolio.jpg"
+      image: "/projects_p/portfolio.jpg" // Fixed path
     },
     {
       id: 4,
@@ -47,7 +47,7 @@ const Projects: React.FC = () => {
       techStack: ["React", "Node.js", "MongoDB", "AWS S3", "Cloudinary"],
       githubUrl: "https://github.com/akhilsakhareliya/lms-platform",
       demoUrl: "https://lms-demo.com",
-      image: "https://images.pexels.com/photos/159711/books-bookstore-book-reading-159711.jpeg?auto=compress&cs=tinysrgb&w=800"
+      image: "/projects_p/lms.jpeg" // Use a local image or keep the external one
     },
     {
       id: 5,
@@ -56,30 +56,36 @@ const Projects: React.FC = () => {
       techStack: ["React", "OpenWeather API", "CSS3", "Geolocation API"],
       githubUrl: "https://github.com/akhilsakhareliya/weather-app",
       demoUrl: "https://weather-app-demo.com",
-      image: "https://images.pexels.com/photos/125510/pexels-photo-125510.jpeg?auto=compress&cs=tinysrgb&w=800"
+      image: "/projects_p/weather.webp" // Use a local image or keep the external one
     },
     {
       id: 6,
-      title: "Portfolio Website",
-      description: "Personal portfolio website showcasing projects, skills, and experience. Built with modern web technologies and responsive design principles.",
-      techStack: ["React", "TypeScript", "Tailwind CSS", "Vite"],
-      githubUrl: "https://github.com/akhilsakhareliya/portfolio",
-      demoUrl: "https://akhilsakhareliya.com",
-      image: "https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=800"
+      title: "E-Commerce Platform",
+      description: "Full-stack e-commerce application with user authentication, payment integration, and admin dashboard. Features include cart management, order tracking, and inventory control.",
+      techStack: ["React", "Node.js", "MongoDB", "Express", "Stripe", "JWT"],
+      githubUrl: "https://github.com/akhilsakhareliya/ecommerce-app",
+      demoUrl: "https://ecommerce-demo.com",
+      image: "/projects_p/eCommerce.webp" // Use a local image
     }
   ];
+
+  // Fallback image in case the main image doesn't load
+  const handleImageError = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
+    const target = e.target as HTMLImageElement;
+    target.src = '/projects_p/placeholder.jpg'; // Create a placeholder image
+  };
 
   return (
     <section id="projects" className="py-20 bg-white dark:bg-gray-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-   <h2 className="text-4xl md:text-5xl font-bold mb-4">
-  <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 dark:from-blue-400 dark:via-purple-400 dark:to-pink-400 bg-clip-text text-transparent">
-    My Projects
-  </span>
-</h2>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+            <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 dark:from-blue-400 dark:via-purple-400 dark:to-pink-400 bg-clip-text text-transparent">
+              My Projects
+            </span>
+          </h2>
           <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            Here are some of my recent projects that showcase my skills and experience in full-stack development.
+            Here are some of my recent projects that showcase my skills and experience in web development.
           </p>
         </div>
 
@@ -87,18 +93,20 @@ const Projects: React.FC = () => {
           {projects.map((project) => (
             <div
               key={project.id}
-              className="bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden"
+              className="bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden group"
             >
               <div className="relative h-48 bg-gray-200 dark:bg-gray-700 overflow-hidden">
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                  onError={handleImageError}
                 />
+                <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300"></div>
               </div>
               
               <div className="p-6">
-                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
+                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                   {project.title}
                 </h3>
                 
@@ -122,7 +130,7 @@ const Projects: React.FC = () => {
                     href={project.githubUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-4 py-2 text-sm bg-gray-900 dark:bg-gray-700 text-white rounded-lg hover:bg-gray-800 dark:hover:bg-gray-600 transition-colors duration-200"
+                    className="flex items-center gap-2 px-4 py-2 text-sm bg-gray-900 dark:bg-gray-700 text-white rounded-lg hover:bg-gray-800 dark:hover:bg-gray-600 transition-all duration-300 transform hover:scale-105"
                   >
                     <Github size={16} />
                     Code
@@ -131,7 +139,7 @@ const Projects: React.FC = () => {
                     href={project.demoUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-4 py-2 text-sm bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-200"
+                    className="flex items-center gap-2 px-4 py-2 text-sm bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all duration-300 transform hover:scale-105"
                   >
                     <ExternalLink size={16} />
                     Demo
