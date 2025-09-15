@@ -383,3 +383,29 @@ a:focus-visible {
     display: none !important;
   }
 }
+
+
+/* Enhanced glass morphism for header */
+.header-glass {
+  background: linear-gradient(135deg, 
+    rgba(219, 234, 254, 0.95) 0%,
+    rgba(255, 255, 255, 0.95) 50%,
+    rgba(224, 231, 255, 0.95) 100%
+  );
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(191, 219, 254, 0.3);
+}
+
+.dark .header-glass {
+  background: linear-gradient(135deg, 
+    rgba(17, 24, 39, 0.95) 0%,
+    rgba(31, 41, 55, 0.95) 50%,
+    rgba(17, 24, 39, 0.95) 100%
+  );
+  border-bottom: 1px solid rgba(55, 65, 81, 0.3);
+}
+
+/* Smooth transitions for header elements */
+.header-transition {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
